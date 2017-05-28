@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="wrapper col-md-6 col-md-offset-2 col-sm-10">
+    <p id="notice"><%= notice %></p>
+
+    <p>
+      <strong>タイトル:</strong>
+      <%= @picture.title %>
+    </p>
+
+    <p>
+      <strong>写真:</strong>
+      <%= image_tag @picture.picture.url %>
+    </p>
+
+    <%= link_to '編集', edit_picture_path(@picture) %> |
+    <%= link_to '戻る', pictures_path %>
+  </div>
+</div>
