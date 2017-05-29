@@ -26,11 +26,12 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
-
+    @picture.user_id = current_user.id
     respond_to do |format|
       if @picture.save
         format.html { redirect_to @picture, notice: '投稿が完了しました' }
         format.json { render :show, status: :created, location: @picture }
+        NoticeMailer.sendmail_picture(@picture).deliver
       else
         format.html { render :new }
         format.json { render json: @picture.errors, status: :unprocessable_entity }
