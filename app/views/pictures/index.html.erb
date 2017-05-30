@@ -3,9 +3,11 @@
     <p><%= notice %></p>
     <h1>投稿一覧</h1>
       <%= link_to '新規投稿', new_picture_path, class: 'btn btn-default' %>
+      <br>
 
     <% @pictures.each do |picture| %>
     <div class="row">
+      <p>投稿者：<%= picture.user.name %></p>
       <p>タイトル:<%= picture.title %></p>
       <p>写真:<%= image_tag picture.picture %></p>
       <%= link_to '詳細', picture, class: 'btn btn-default btn-sm btn-success' %>
